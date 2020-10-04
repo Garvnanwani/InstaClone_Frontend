@@ -106,10 +106,6 @@ const ProfileForm = () => {
   const handleEditProfile = (e) => {
     e.preventDefault();
 
-    if (!fullname.value) {
-      return toast.error("The name field should not be empty");
-    }
-
     if (!username.value) {
       return toast.error("The username field should not be empty");
     }

@@ -9,14 +9,13 @@ import { FormWrapper } from "./Login";
 const Signup = ({ login }) => {
   const { setUser } = useContext(UserContext);
   const email = useInput("");
-  const fullname = useInput("");
   const username = useInput("");
   const password = useInput("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email.value || !password.value || !username.value || !fullname.value) {
+    if (!email.value || !password.value || !username.value) {
       return toast.error("Please fill in all the fields");
     }
 
@@ -37,7 +36,6 @@ const Signup = ({ login }) => {
       email: email.value,
       password: password.value,
       username: username.value,
-      fullname: fullname.value,
     };
 
     try {
@@ -51,7 +49,6 @@ const Signup = ({ login }) => {
     setUser(user.data);
     localStorage.setItem("user", JSON.stringify(user.data));
 
-    fullname.setValue("");
     username.setValue("");
     password.setValue("");
     email.setValue("");
@@ -67,12 +64,6 @@ const Signup = ({ login }) => {
           placeholder="Email"
           value={email.value}
           onChange={email.onChange}
-        />
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={fullname.value}
-          onChange={fullname.onChange}
         />
         <input
           type="text"
