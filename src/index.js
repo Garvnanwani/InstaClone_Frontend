@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { render } from "react-dom";
+import App from "./App";
+import { UserProvider } from "./context/UserContext";
 import { FeedProvider } from "./context/FeedContext";
 import { ThemeProvider } from "./context/ThemeContext";
-import { UserProvider } from "./context/UserContext";
 
-ReactDOM.render(
+render(
   <UserProvider>
     <FeedProvider>
       <ThemeProvider>
@@ -13,6 +13,5 @@ ReactDOM.render(
       </ThemeProvider>
     </FeedProvider>
   </UserProvider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-

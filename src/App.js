@@ -1,15 +1,14 @@
-import React, { useContext } from 'react';
-import { ToastContainer } from 'react-toastify';
+import React, { useContext } from "react";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import Auth from "./components/Auth";
-import { ThemeContext } from "./context/ThemeContext";
-import { UserContext } from "./context/UserContext";
-import Routing from "./Routing";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/GlobalStyle";
+import Auth from "./components/Auth";
+import Routing from "./Routing";
+import { UserContext } from "./context/UserContext";
+import { ThemeContext } from "./context/ThemeContext";
 
-function App() {
-
+const App = () => {
   const { user } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
 
@@ -20,6 +19,6 @@ function App() {
       {user ? <Routing /> : <Auth />}
     </StyledThemeProvider>
   );
-}
+};
 
 export default App;
