@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import LikePost from "./LikePost";
-import SavePost from "./SavePost";
-import Comment from "./Comment";
-import DeletePost from "./DeletePost";
-import Modal from "./Modal";
+import styled from "styled-components";
 import useInput from "../hooks/useInput";
 import Avatar from "../styles/Avatar";
-import { client } from "../utils";
-import { timeSince } from "../utils";
-import { MoreIcon, CommentIcon, InboxIcon } from "./Icons";
+import { client, timeSince } from "../utils";
+import Comment from "./Comment";
+import DeletePost from "./DeletePost";
+import { CommentIcon, InboxIcon, MoreIcon } from "./Icons";
+import LikePost from "./LikePost";
+import Modal from "./Modal";
+import SavePost from "./SavePost";
 
 const ModalContentWrapper = styled.div`
   width: 300px;
@@ -138,7 +137,7 @@ const Post = ({ post }) => {
     if (e.keyCode === 13) {
       e.preventDefault();
 
-      client(`/posts/${post._id}/comments`, {
+      client(`/post/${post._id}/comments`, {
         body: { text: comment.value },
       }).then((resp) => setNewComments([...newComments, resp.data]));
 

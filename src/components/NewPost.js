@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import styled from "styled-components";
 import { toast } from "react-toastify";
-import Modal from "./Modal";
-import useInput from "../hooks/useInput";
+import styled from "styled-components";
 import { FeedContext } from "../context/FeedContext";
+import useInput from "../hooks/useInput";
 import { client, uploadImage } from "../utils";
 import { NewPostIcon } from "./Icons";
+import Modal from "./Modal";
 
 const NewPostWrapper = styled.div`
   .newpost-header {
@@ -94,7 +94,7 @@ const NewPost = () => {
       tags,
     };
 
-    client(`/posts`, { body: newPost }).then((res) => {
+    client(`/post`, { body: newPost }).then((res) => {
       const post = res.data;
       post.isLiked = false;
       post.isSaved = false;

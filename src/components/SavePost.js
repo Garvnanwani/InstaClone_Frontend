@@ -12,10 +12,10 @@ const SavePost = ({ isSaved, postId }) => {
   const handleToggleSave = () => {
     if (savedState) {
       setSaved(false);
-      client(`/posts/${postId}/toggleSave`);
+      client(`/post/${postId}/toggleSave`);
     } else {
       setSaved(true);
-      client(`/posts/${postId}/toggleSave`);
+      client(`/post/${postId}/toggleSave`);
     }
   };
 

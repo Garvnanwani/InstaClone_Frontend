@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import PostPreview from "../components/PostPreview";
-import Loader from "../components/PostPreview";
+import React, { useEffect, useState } from "react";
+import { default as Loader, default as PostPreview } from "../components/PostPreview";
 import { client } from "../utils";
 
 const Explore = () => {
@@ -8,7 +7,7 @@ const Explore = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    client("/posts").then((res) => {
+    client("/post").then((res) => {
       setPosts(res.data);
       setLoading(false);
     });

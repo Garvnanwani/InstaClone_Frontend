@@ -1,18 +1,17 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
-import LikePost from "../components/LikePost";
-import SavePost from "../components/SavePost";
 import Comment from "../components/Comment";
-import Placeholder from "../components/Placeholder";
-import Avatar from "../styles/Avatar";
+import { CommentIcon, InboxIcon, MoreIcon } from "../components/Icons";
+import LikePost from "../components/LikePost";
 import Loader from "../components/Loader";
 import Modal from "../components/Modal";
+import Placeholder from "../components/Placeholder";
 import { ModalContent } from "../components/Post";
+import SavePost from "../components/SavePost";
 import useInput from "../hooks/useInput";
-import { client } from "../utils";
-import { timeSince } from "../utils";
-import { MoreIcon, CommentIcon, InboxIcon } from "../components/Icons";
+import Avatar from "../styles/Avatar";
+import { client, timeSince } from "../utils";
 
 const Wrapper = styled.div`
   display: grid;
@@ -122,7 +121,7 @@ const DetailedPost = () => {
     if (e.keyCode === 13) {
       e.preventDefault();
 
-      client(`/posts/${post._id}/comments`, {
+      client(`/post/${post._id}/comments`, {
         body: { text: comment.value },
       }).then((resp) => {
         setComments([...commentsState, resp.data]);
@@ -135,7 +134,7 @@ const DetailedPost = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    client(`/posts/${postId}`)
+    client(`/post/${postId}`)
       .then((res) => {
         setPost(res.data);
         setComments(res.data.comments);
