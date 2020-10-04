@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import Follow from "./Follow";
-import Modal from "./Modal";
-import Button from "../styles/Button";
 import { UserContext } from "../context/UserContext";
-import { OptionsIcon } from "./Icons";
-import { CloseIcon } from "./Icons";
+import Button from "../styles/Button";
+import Follow from "./Follow";
+import { CloseIcon, OptionsIcon } from "./Icons";
+import Modal from "./Modal";
 
 const MobileWrapper = styled.div`
   margin: 1rem 0;
@@ -247,13 +246,13 @@ const ProfileHeader = ({ profile }) => {
                 <OptionsIcon onClick={handleLogout} />
               </div>
             ) : (
-              <Follow
-                isFollowing={profile?.isFollowing}
-                incFollowers={incFollowers}
-                decFollowers={decFollowers}
-                userId={profile?._id}
-              />
-            )}
+                <Follow
+                  isFollowing={profile?.isFollowing}
+                  incFollowers={incFollowers}
+                  decFollowers={decFollowers}
+                  userId={profile?._id}
+                />
+              )}
           </div>
 
           <div className="profile-stats">
@@ -294,7 +293,7 @@ const ProfileHeader = ({ profile }) => {
             <span className="bold">{profile?.fullname}</span>
             <p>{profile?.bio}</p>
             <a
-              href={profile?.website}
+              href={profile?.website ? profile?.website : ""}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -340,7 +339,7 @@ const ProfileHeader = ({ profile }) => {
         <div className="mobile-bio">
           <span className="bold">{profile?.fullname}</span>
           <p>{profile?.bio}</p>
-          <a href={profile?.website} target="_blank" rel="noopener noreferrer">
+          <a href={profile?.website ? profile?.website : ""} target="_blank" rel="noopener noreferrer">
             {profile?.website}
           </a>
         </div>
