@@ -49,7 +49,7 @@ export const FormWrapper = styled.div`
   }
 `;
 
-const Login = ({ signup }) => {
+const Login = ({ signup, reset }) => {
   const { setUser } = useContext(UserContext);
   const email = useInput("");
   const password = useInput("");
@@ -71,6 +71,7 @@ const Login = ({ signup }) => {
     }
 
     const user = await client("/auth/userprofile");
+    console.log(user);
     localStorage.setItem("user", JSON.stringify(user.data));
     setUser(user.data);
     toast.success("Login successful");
@@ -97,6 +98,13 @@ const Login = ({ signup }) => {
         />
         <input type="submit" value="Log In" className="login-btn" />
       </form>
+
+
+      <div>
+        <p>
+          <span onClick={reset}>Forgot Password?</span>
+        </p>
+      </div>
 
       <div>
         <p>

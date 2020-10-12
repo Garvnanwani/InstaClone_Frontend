@@ -1,14 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 // pages, components, styles
 import Nav from "./components/Nav";
-import Container from "./styles/Container";
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Explore from "./pages/Explore";
 import DetailedPost from "./pages/DetailedPost";
 import EditProfile from "./pages/EditProfile";
+import Explore from "./pages/Explore";
+import Home from "./pages/Home";
+import NewPassword from "./pages/NewPassword";
+import Profile from "./pages/Profile";
+import Container from "./styles/Container";
+
 
 const Routing = () => {
   return (
@@ -21,6 +22,7 @@ const Routing = () => {
           <Route path="/accounts/edit" component={EditProfile} />
           <Route path="/:username" component={Profile} />
           <Route path="/" component={Home} />
+          <Route path="/reset/:token" component={NewPassword} />
         </Switch>
       </Container>
     </Router>
