@@ -6,7 +6,6 @@ import DetailedPost from "./pages/DetailedPost";
 import EditProfile from "./pages/EditProfile";
 import Explore from "./pages/Explore";
 import Home from "./pages/Home";
-import NewPassword from "./pages/NewPassword";
 import Profile from "./pages/Profile";
 import Container from "./styles/Container";
 
@@ -22,7 +21,6 @@ const Routing = () => {
           <Route path="/accounts/edit" component={EditProfile} />
           <Route path="/:username" component={Profile} />
           <Route path="/" component={Home} />
-          <Route path="/reset/:token" component={NewPassword} />
         </Switch>
       </Container>
     </Router>

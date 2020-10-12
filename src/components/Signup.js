@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../assets/logo.png";
 import { UserContext } from "../context/UserContext";
@@ -6,7 +7,7 @@ import useInput from "../hooks/useInput";
 import { client } from "../utils";
 import { FormWrapper } from "./Login";
 
-const Signup = ({ login }) => {
+const Signup = () => {
   const { setUser } = useContext(UserContext);
   const email = useInput("");
   const username = useInput("");
@@ -82,7 +83,7 @@ const Signup = ({ login }) => {
 
       <div>
         <p>
-          Already have an account? <span onClick={login}>Login</span>
+          Already have an account? <Link to="/">Log In</Link>
         </p>
       </div>
     </FormWrapper>

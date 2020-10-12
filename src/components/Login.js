@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
@@ -102,13 +103,13 @@ const Login = ({ signup, reset }) => {
 
       <div>
         <p>
-          <span onClick={reset}>Forgot Password?</span>
+          <Link to="/reset-password">Forgot Password?</Link>
         </p>
       </div>
 
       <div>
         <p>
-          Don't have an account? <span onClick={signup}>Sign up</span>
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
       </div>
     </FormWrapper>

@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../assets/logo.png";
 import useInput from "../hooks/useInput";
 import { client } from "../utils";
 import { FormWrapper } from "./Login";
 
-const ResetPassword = ({ login }) => {
+const ResetPassword = () => {
     const email = useInput("");
 
     const handleReset = async (e) => {
@@ -45,7 +46,7 @@ const ResetPassword = ({ login }) => {
 
             <div>
                 <p>
-                    Already have an account? <span onClick={login}>Login</span>
+                    Already have an account? <Link to="/">Log In</Link>
                 </p>
             </div>
         </FormWrapper>
