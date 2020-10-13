@@ -21,11 +21,11 @@ const Routing = () => {
       <Nav />
       <Container>
         <Switch>
+          <PrivateRoute exact path="/" component={Home} />
           <PrivateRoute path="/explore" component={Explore} />
           <PrivateRoute path="/p/:postId" component={DetailedPost} />
           <PrivateRoute path="/accounts/edit" component={EditProfile} />
           <PrivateRoute path="/:username" component={Profile} />
-          <PrivateRoute path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/reset-password" component={ResetPassword} />
