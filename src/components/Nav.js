@@ -56,6 +56,7 @@ const NavWrapper = styled.div`
 const Nav = () => {
   const { user } = useContext(UserContext);
 
+  console.log(user);
   return (
     <NavWrapper>
       <nav>

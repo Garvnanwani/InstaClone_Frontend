@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import styled from "styled-components";
 import logo from "../assets/logo.png";
@@ -50,10 +50,11 @@ export const FormWrapper = styled.div`
   }
 `;
 
-const Login = ({ signup, reset }) => {
+const Login = () => {
   const { setUser } = useContext(UserContext);
   const email = useInput("");
   const password = useInput("");
+  const history = useHistory();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -78,6 +79,7 @@ const Login = ({ signup, reset }) => {
 
     email.setValue("");
     password.setValue("");
+    history.push('/')
   };
 
   return (

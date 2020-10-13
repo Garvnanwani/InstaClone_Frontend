@@ -14,7 +14,7 @@ const Signup = () => {
   const password = useInput("");
   const history = useHistory();
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     if (!email.value || !password.value || !username.value) {
@@ -58,7 +58,7 @@ const Signup = () => {
   };
 
   return (
-    <FormWrapper onSubmit={handleLogin}>
+    <FormWrapper onSubmit={handleSignup}>
       <img src={logo} alt="logo" />
 
       <form>
@@ -85,7 +85,7 @@ const Signup = () => {
 
       <div>
         <p>
-          Already have an account? <Link to="/">Log In</Link>
+          Already have an account? <Link to="/login">Log In</Link>
         </p>
       </div>
     </FormWrapper>
