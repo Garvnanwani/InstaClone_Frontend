@@ -175,7 +175,7 @@ const DetailedPost = () => {
             <div className="post-header-wrapper">
               <div className="post-header">
                 <Avatar
-                  onClick={() => history.push(`/${post.user?.username}`)}
+                  onClick={() => history.push(`/u/${post.user?.username}`)}
                   className="pointer avatar"
                   src={post.user?.avatar}
                   alt="avatar"
@@ -183,7 +183,7 @@ const DetailedPost = () => {
 
                 <h3
                   className="pointer"
-                  onClick={() => history.push(`/${post.user?.username}`)}
+                  onClick={() => history.push(`/u/${post.user?.username}`)}
                 >
                   {post.user?.username}
                 </h3>
