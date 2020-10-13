@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import App from "../App";
+import { UserContext } from "../context/UserContext";
 import NewPassword from "../pages/NewPassword";
 import Login from "./Login";
 import ResetPassword from "./ResetPassword";
@@ -28,10 +30,12 @@ import Signup from "./Signup";
 
 
 const Auth = () => {
+  const { user } = useContext(UserContext);
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Login} />
+        {(user) ? <Route path="/" exact component={App} /> : <Route path="/" exact component={Login} />}
+        <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/reset-password" component={ResetPassword} />
         <Route path="/reset/:token" component={NewPassword} />
