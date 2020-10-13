@@ -72,7 +72,6 @@ const Login = ({ signup, reset }) => {
     }
 
     const user = await client("/auth/userprofile");
-    console.log(user);
     localStorage.setItem("user", JSON.stringify(user.data));
     setUser(user.data);
     toast.success("Login successful");

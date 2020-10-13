@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import Nav from '../components/Nav';
 import { default as Loader, default as PostPreview } from "../components/PostPreview";
+import Container from '../styles/Container';
 import { client } from "../utils";
 
 const Explore = () => {
@@ -19,10 +21,13 @@ const Explore = () => {
 
   return (
     <>
-      <div style={{ marginTop: "2.3rem" }}>
-        <h2>Explore</h2>
-        <PostPreview posts={posts} />
-      </div>
+      <Nav />
+      <Container>
+        <div style={{ marginTop: "2.3rem" }}>
+          <h2>Explore</h2>
+          <PostPreview posts={posts} />
+        </div>
+      </Container>
     </>
   );
 };

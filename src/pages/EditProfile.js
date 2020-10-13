@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import Nav from '../components/Nav';
 import ProfileForm from "../components/ProfileForm";
+import Container from '../styles/Container';
 
 const Wrapper = styled.div`
   width: 930px;
@@ -33,11 +35,16 @@ const Wrapper = styled.div`
 
 const EditProfile = () => {
   return (
-    <Wrapper>
-      <div className="profile-form-container">
-        <ProfileForm />
-      </div>
-    </Wrapper>
+    <>
+      <Nav />
+      <Container>
+        <Wrapper>
+          <div className="profile-form-container">
+            <ProfileForm />
+          </div>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

@@ -6,11 +6,13 @@ import { CommentIcon, InboxIcon, MoreIcon } from "../components/Icons";
 import LikePost from "../components/LikePost";
 import Loader from "../components/Loader";
 import Modal from "../components/Modal";
+import Nav from '../components/Nav';
 import Placeholder from "../components/Placeholder";
 import { ModalContent } from "../components/Post";
 import SavePost from "../components/SavePost";
 import useInput from "../hooks/useInput";
 import Avatar from "../styles/Avatar";
+import Container from '../styles/Container';
 import { client, timeSince } from "../utils";
 
 const Wrapper = styled.div`
@@ -159,88 +161,93 @@ const DetailedPost = () => {
   }
 
   return (
-    <Wrapper>
-      <img
-        className="post-img"
-        src={post.files?.length && post.files[0]}
-        alt="post"
-      />
+    <>
+      <Nav />
+      <Container>
+        <Wrapper>
+          <img
+            className="post-img"
+            src={post.files?.length && post.files[0]}
+            alt="post"
+          />
 
-      <div className="post-info">
-        <div className="post-header-wrapper">
-          <div className="post-header">
-            <Avatar
-              onClick={() => history.push(`/${post.user?.username}`)}
-              className="pointer avatar"
-              src={post.user?.avatar}
-              alt="avatar"
-            />
+          <div className="post-info">
+            <div className="post-header-wrapper">
+              <div className="post-header">
+                <Avatar
+                  onClick={() => history.push(`/${post.user?.username}`)}
+                  className="pointer avatar"
+                  src={post.user?.avatar}
+                  alt="avatar"
+                />
 
-            <h3
-              className="pointer"
-              onClick={() => history.push(`/${post.user?.username}`)}
+                <h3
+                  className="pointer"
+                  onClick={() => history.push(`/${post.user?.username}`)}
+                >
+                  {post.user?.username}
+                </h3>
+              </div>
+              {post.isMine && <MoreIcon onClick={() => setShowModal(true)} />}
+
+              {showModal && (
+                <Modal>
+                  <ModalContent
+                    postId={post._id}
+                    hideGotoPost={true}
+                    closeModal={closeModal}
+                  />
+                </Modal>
+              )}
+            </div>
+
+            <div className="comments">
+              {commentsState.map((comment) => (
+                <Comment key={comment._id} comment={comment} />
+              ))}
+              <div ref={commmentsEndRef} />
+            </div>
+
+            <div className="post-actions-stats">
+              <div className="post-actions">
+                <LikePost
+                  isLiked={post?.isLiked}
+                  postId={post?._id}
+                  incLikes={incLikes}
+                  decLikes={decLikes}
+                />
+                <CommentIcon />
+                <InboxIcon />
+                <SavePost isSaved={post?.isSaved} postId={post?._id} />
+              </div>
+
+              {likesState !== 0 && (
+                <span className="likes bold">
+                  {likesState} {likesState > 1 ? "likes" : "like"}
+                </span>
+              )}
+            </div>
+
+            <span
+              style={{ display: "block", padding: "0 1rem", paddingBottom: "1rem" }}
+              className="secondary"
             >
-              {post.user?.username}
-            </h3>
-          </div>
-          {post.isMine && <MoreIcon onClick={() => setShowModal(true)} />}
-
-          {showModal && (
-            <Modal>
-              <ModalContent
-                postId={post._id}
-                hideGotoPost={true}
-                closeModal={closeModal}
-              />
-            </Modal>
-          )}
-        </div>
-
-        <div className="comments">
-          {commentsState.map((comment) => (
-            <Comment key={comment._id} comment={comment} />
-          ))}
-          <div ref={commmentsEndRef} />
-        </div>
-
-        <div className="post-actions-stats">
-          <div className="post-actions">
-            <LikePost
-              isLiked={post?.isLiked}
-              postId={post?._id}
-              incLikes={incLikes}
-              decLikes={decLikes}
-            />
-            <CommentIcon />
-            <InboxIcon />
-            <SavePost isSaved={post?.isSaved} postId={post?._id} />
-          </div>
-
-          {likesState !== 0 && (
-            <span className="likes bold">
-              {likesState} {likesState > 1 ? "likes" : "like"}
-            </span>
-          )}
-        </div>
-
-        <span
-          style={{ display: "block", padding: "0 1rem", paddingBottom: "1rem" }}
-          className="secondary"
-        >
-          {timeSince(post.createdAt)} ago
+              {timeSince(post.createdAt)} ago
         </span>
 
-        <div className="add-comment">
-          <textarea
-            columns="2"
-            placeholder="Add a Comment"
-            value={comment.value}
-            onChange={comment.onChange}
-            onKeyDown={handleAddComment}
-          ></textarea>
-        </div>
-      </div>
-    </Wrapper>
+            <div className="add-comment">
+              <textarea
+                columns="2"
+                placeholder="Add a Comment"
+                value={comment.value}
+                onChange={comment.onChange}
+                onKeyDown={handleAddComment}
+              ></textarea>
+            </div>
+          </div>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

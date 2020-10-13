@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../components/Loader";
+import Nav from '../components/Nav';
 import NoFeedSuggestions from "../components/NoFeedSuggestions";
 import Post from "../components/Post";
 import Suggestions from "../components/Suggestions";
 import { FeedContext } from "../context/FeedContext";
 import { UserContext } from "../context/UserContext";
+import Container from '../styles/Container';
 import { client } from "../utils";
 
 const Wrapper = styled.div`
@@ -36,20 +38,25 @@ const Home = () => {
   }
 
   return (
-    <Wrapper>
-      {feed.length > 0 ? (
-        <>
-          <div className="home">
-            {feed.map((post) => (
-              <Post key={post._id} post={post} />
-            ))}
-          </div>
-          <Suggestions />{" "}
-        </>
-      ) : (
-          <NoFeedSuggestions />
-        )}
-    </Wrapper>
+    <>
+      <Nav />
+      <Container>
+        <Wrapper>
+          {feed.length > 0 ? (
+            <>
+              <div className="home">
+                {feed.map((post) => (
+                  <Post key={post._id} post={post} />
+                ))}
+              </div>
+              <Suggestions />{" "}
+            </>
+          ) : (
+              <NoFeedSuggestions />
+            )}
+        </Wrapper>
+      </Container >
+    </>
   );
 };
 

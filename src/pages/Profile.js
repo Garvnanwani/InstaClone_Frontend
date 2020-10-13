@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { PostIcon, SavedIcon } from "../components/Icons";
 import Loader from "../components/Loader";
+import Nav from '../components/Nav';
 import Placeholder from "../components/Placeholder";
 import PostPreview from "../components/PostPreview";
 import ProfileHeader from "../components/ProfileHeader";
+import Container from '../styles/Container';
 import { client } from "../utils";
 
 const Wrapper = styled.div`
@@ -69,55 +71,60 @@ const Profile = () => {
   }
 
   return (
-    <Wrapper>
-      <ProfileHeader profile={profile} />
-      <hr />
+    <>
+      <Nav />
+      <Container>
+        <Wrapper>
+          <ProfileHeader profile={profile} />
+          <hr />
 
-      <div className="profile-tab">
-        <div
-          style={{ fontWeight: tab === "POSTS" ? "500" : "" }}
-          onClick={() => setTab("POSTS")}
-        >
-          <PostIcon />
-          <span>Posts</span>
-        </div>
-        <div
-          style={{ fontWeight: tab === "SAVED" ? "500" : "" }}
-          onClick={() => setTab("SAVED")}
-        >
-          <SavedIcon />
-          <span>Saved</span>
-        </div>
-      </div>
+          <div className="profile-tab">
+            <div
+              style={{ fontWeight: tab === "POSTS" ? "500" : "" }}
+              onClick={() => setTab("POSTS")}
+            >
+              <PostIcon />
+              <span>Posts</span>
+            </div>
+            <div
+              style={{ fontWeight: tab === "SAVED" ? "500" : "" }}
+              onClick={() => setTab("SAVED")}
+            >
+              <SavedIcon />
+              <span>Saved</span>
+            </div>
+          </div>
 
-      {tab === "POSTS" && (
-        <>
-          {profile?.posts?.length === 0 ? (
-            <Placeholder
-              title="Posts"
-              text="Once you start making new posts, they'll appear here"
-              icon="post"
-            />
-          ) : (
-              <PostPreview posts={profile?.posts} />
-            )}
-        </>
-      )}
+          {tab === "POSTS" && (
+            <>
+              {profile?.posts?.length === 0 ? (
+                <Placeholder
+                  title="Posts"
+                  text="Once you start making new posts, they'll appear here"
+                  icon="post"
+                />
+              ) : (
+                  <PostPreview posts={profile?.posts} />
+                )}
+            </>
+          )}
 
-      {tab === "SAVED" && (
-        <>
-          {profile?.savedPosts?.length === 0 ? (
-            <Placeholder
-              title="Saved"
-              text="Save photos and videos that you want to see again"
-              icon="bookmark"
-            />
-          ) : (
-              <PostPreview posts={profile?.savedPosts} />
-            )}
-        </>
-      )}
-    </Wrapper>
+          {tab === "SAVED" && (
+            <>
+              {profile?.savedPosts?.length === 0 ? (
+                <Placeholder
+                  title="Saved"
+                  text="Save photos and videos that you want to see again"
+                  icon="bookmark"
+                />
+              ) : (
+                  <PostPreview posts={profile?.savedPosts} />
+                )}
+            </>
+          )}
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 
