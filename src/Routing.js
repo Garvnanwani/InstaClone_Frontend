@@ -19,7 +19,7 @@ const Routing = () => {
         <PrivateRoute path="/explore" component={Explore} />
         <PrivateRoute path="/p/:postId" component={DetailedPost} />
         <PrivateRoute path="/accounts/edit" component={EditProfile} />
-        <PrivateRoute path="/:username" component={Profile} />
+        <PrivateRoute path="/u/:username" component={Profile} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/reset-password" component={ResetPassword} />
