@@ -8,6 +8,8 @@ import { client } from "../utils";
 
 const NewPassword = () => {
 
+    localStorage.removeItem("user")
+
     const new_password = useInput("");
 
     const { token } = useParams()

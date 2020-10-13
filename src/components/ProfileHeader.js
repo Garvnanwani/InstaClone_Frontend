@@ -224,6 +224,7 @@ const ProfileHeader = ({ profile }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     toast.success("You are logged out");
+    history.push('/')
   };
 
   useEffect(() => setFollowers(profile?.followersCount), [profile]);

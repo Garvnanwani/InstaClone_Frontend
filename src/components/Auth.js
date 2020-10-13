@@ -34,7 +34,7 @@ const Auth = () => {
         <Route path="/" exact component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/reset-password" component={ResetPassword} />
-        <Route path="/:token" component={NewPassword} />
+        <Route path="/reset/:token" component={NewPassword} />
       </Switch>
     </Router>
   );
