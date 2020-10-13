@@ -54,7 +54,7 @@ const Signup = () => {
     username.setValue("");
     password.setValue("");
     email.setValue("");
-
+    history.push('/')
   };
 
   return (
