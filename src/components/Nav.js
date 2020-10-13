@@ -79,7 +79,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <Link to={`/${user.username}`}>
+            <Link to={`/u/${user.username}`}>
               <img
                 style={{
                   width: "24px",

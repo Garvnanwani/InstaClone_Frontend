@@ -73,7 +73,7 @@ export const UserCard = ({ user }) => {
     <StyledUserCard>
       <Avatar
         className="pointer"
-        onClick={() => history.push(`/${user.username}`)}
+        onClick={() => history.push(`/u/${user.username}`)}
         lg
         src={user.avatar}
         alt="avatar"
@@ -82,7 +82,7 @@ export const UserCard = ({ user }) => {
       <div className="user-info">
         <h3
           className="pointer"
-          onClick={() => history.push(`/${user.username}`)}
+          onClick={() => history.push(`/u/${user.username}`)}
         >
           {user.username}
         </h3>

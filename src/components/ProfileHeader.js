@@ -179,7 +179,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
               className="pointer"
               onClick={() => {
                 closeModal();
-                history.push(`/${user.username}`);
+                history.push(`/u/${user.username}`);
               }}
               src={user.avatar}
               alt="avatar"
@@ -189,7 +189,7 @@ const ModalContent = ({ loggedInUser, users, closeModal, title }) => {
                 className="pointer"
                 onClick={() => {
                   closeModal();
-                  history.push(`/${user.username}`);
+                  history.push(`/u/${user.username}`);
                 }}
               >
                 {user.username}
